@@ -37,6 +37,45 @@ export default function Protected() {
     <div>
       <h3>Protected Page</h3>
       You are logged in as <b>{user ? user.email : ''}</b>
+      <div style={{ margin: '10px' }}>
+        Submit current user claim (readOnly):
+        <textarea
+          readOnly
+          value={jwt}
+          style={{
+            display: 'block',
+            margin: '10px',
+            width: '800px',
+            height: '200px',
+          }}
+        />
+        <button
+          style={{ display: 'block', margin: '10px' }}
+          onClick={submitRealToken}
+        >
+          Submit Claim
+        </button>
+      </div>
+      <div style={{ margin: '10px' }}>
+        Submit fake claim (editable):
+        <textarea
+          value={fakeClaim}
+          onChange={handleOnChange}
+          style={{
+            display: 'block',
+            margin: '10px',
+            width: '800px',
+            height: '200px',
+          }}
+        />
+        <button
+          onClick={submitFakeToken}
+          style={{ display: 'block', margin: '10px' }}
+        >
+          Submit Claim
+        </button>
+        <Response response={response} />
+      </div>
     </div>
   );
 }
