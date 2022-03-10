@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
-import Protected from "./Protected";
-import "./App.css";
-import { Router, Link, navigate } from "@reach/router";
-import { IdentityContext } from "./identityContext";
+import React, { useContext } from 'react';
+import Protected from './Protected';
+import './App.css';
+import { Router, Link, navigate } from '@reach/router';
+import { IdentityContext } from './identityContext';
 
 function AuthExample() {
   return (
-    <div className="App">
+    <div className='App'>
       <Router>
-        <Home path="/" />
-        <PrivateRoute path="/protected" as={Protected} />
+        <Home path='/' />
+        <PrivateRoute path='/protected' as={Protected} />
       </Router>
     </div>
   );
@@ -21,7 +21,7 @@ const Home = () => {
       <LoginButton />
       <ul>
         <li>
-          <Link to="/protected">Protected Page</Link>
+          <Link to='/protected'>Protected Page</Link>
         </li>
       </ul>
     </>
@@ -35,12 +35,12 @@ const LoginButton = () => {
     netlifyIdentity.open();
   };
   const logout = () => {
-    netlifyIdentity.logout(() => navigate("/"));
+    netlifyIdentity.logout(() => navigate('/'));
   };
   return user ? (
     <div>
       <button onClick={logout}>Sign out</button>
-      <p>Welcome! </p>
+      <p>Welcome {user}</p>
     </div>
   ) : (
     <div>
@@ -60,7 +60,7 @@ const PrivateRoute = (props) => {
 function Login() {
   return (
     <div>
-      Must be logged in to access this route <Link to={"/"}>Home</Link>
+      Must be logged in to access this route <Link to={'/'}>Home</Link>
     </div>
   );
 }
