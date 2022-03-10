@@ -41,7 +41,7 @@ const LoginButton = () => {
     <div>
       <button onClick={logout}>Sign out</button>
       <p>
-        Welcome <b>{user ? user.name : ''}</b>
+        Welcome <b>{user.name}</b>
       </p>
     </div>
   ) : (
