@@ -3,7 +3,6 @@ import Protected from './Protected';
 import './App.css';
 import { Router, Link, navigate } from '@reach/router';
 import { IdentityContext } from './identityContext';
-import netlifyIdentity from 'netlify-identity-widget';
 
 function AuthExample() {
   return (
@@ -28,7 +27,6 @@ const Home = () => {
     </>
   );
 };
-let currentUser = netlifyIdentity.currentUser();
 
 const LoginButton = () => {
   const { identity: netlifyIdentity, user } = useContext(IdentityContext);
@@ -42,7 +40,9 @@ const LoginButton = () => {
   return user ? (
     <div>
       <button onClick={logout}>Sign out</button>
-      <p>Welcome {currentUser}</p>
+      <p>
+        Welcome <b>{user ? user.name : ''}</b>
+      </p>
     </div>
   ) : (
     <div>
